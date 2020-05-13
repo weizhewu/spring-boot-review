@@ -26,6 +26,6 @@ public class Authority {
     /**
      * 拥有权限的用户列表
      */
-    @ManyToMany(mappedBy = "authorityList")
-    private List<User> userList;
+//    @ManyToMany(mappedBy = "authorityList")
+//    private List<User> userList;
 }

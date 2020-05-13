@@ -1,4 +1,4 @@
-package com.soft1851.springboot.jpa.dao;
+package com.soft1851.springboot.jpa.repository;
 
 import com.soft1851.springboot.jpa.model.Message;
 import com.soft1851.springboot.jpa.service.MessageService;
@@ -6,17 +6,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @Author: zw_w
@@ -32,12 +28,16 @@ class MessageRepositoryTest {
     @Test
     public void testSave() {
         Message message = Message.builder().msgText("软件1851").msgSummary("沉迷学习").build();
+        Message message1 = Message.builder().msgText("移动1851").msgSummary("沉迷学习").build();
         // 保存单个对象
         messageRepository.save(message);
+        messageRepository.save(message1);
 
         List<Message> messages = new ArrayList<>(Arrays.asList(
                 Message.builder().msgText("后端").msgSummary("SpringBoot").build(),
                 Message.builder().msgText("前端").msgSummary("Vue.js").build(),
+                Message.builder().msgText("安卓").msgSummary("移动班").build(),
+                Message.builder().msgText("小程序").msgSummary("软件班").build(),
                 Message.builder().msgText("移动端").msgSummary("Flutter").build()));
         // 保存多个
         messageRepository.saveAll(messages);
@@ -84,7 +84,7 @@ class MessageRepositoryTest {
 
         // 批量更新
         List<Message> messages = new ArrayList<>();
-        messages.add(Message.builder().msgId(5).msgText("workday").msgSummary("study").build());
+        messages.add(Message.builder().msgId(7).msgText("workday").msgSummary("study").build());
         messages.add(Message.builder().msgId(6).msgText("weekend").msgSummary("play").build());
         messageService.batchUpdate(messages);
     }
@@ -117,11 +117,10 @@ class MessageRepositoryTest {
 
     @Test
     public void testCustomSQL() {
-//        Integer num = messageRepository.insertMessage("自定义SQL", "JPA");
-//        log.info("增加的数据条数： {}", num);
-        Integer updateNum = messageRepository.updateName("JPQL", 6);
-//        log.info("修改的数据条数： {}", updateNum);
-        System.out.println(updateNum);
+        Integer num = messageRepository.insertMessage("自定义SQL", "JPA");
+        log.info("增加的数据条数： {}", num);
+        Integer updateNum = messageRepository.updateName("JPQL", 1);
+        log.info("修改的数据条数： {}", updateNum);
     }
 
     @Test
@@ -146,5 +145,16 @@ class MessageRepositoryTest {
     @Test
     void findDistinctByMsgIdLessThan() {
         System.out.println(messageRepository.findDistinctByMsgIdLessThan(13));
+    }
+
+    @Test
+    void findById() {
+//     Message n = messageRepository.findById(1);
+//        System.out.println(n);
+    }
+
+    @Test
+    void findByName() {
+        System.out.println(messageRepository.findByName("软件1851", Pageable.unpaged()));
     }
 }

@@ -31,10 +31,10 @@ public class Address {
     @Column(name = "address", nullable = true, length = 100)
     private String address;
 
-    /**
-     * 如果不需要根据Address级联查询 People，可以注释掉
-     */
-    @OneToOne(mappedBy = "address", cascade = {CascadeType.MERGE,
-            CascadeType.REFRESH}, optional = false)
-    private People people;
+//    /**
+//     * 如果不需要根据Address级联查询 People，可以注释掉
+//     */
+//    @OneToOne(mappedBy = "address", cascade = {CascadeType.MERGE,
+//            CascadeType.REFRESH}, optional = false)
+//    private People people;
 }

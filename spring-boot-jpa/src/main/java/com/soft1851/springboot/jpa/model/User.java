@@ -1,4 +1,4 @@
-package com.soft1851.springboot.jpa.model.cascade;
+package com.soft1851.springboot.jpa.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,6 +20,10 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+//@NamedQueries({
+//        @NamedQuery(name = "User.findByPassWord", query = "select u from User u where u.passWord = ?1"),
+//        @NamedQuery(name = "User.findByNickName", query = "select u from User u where u.nickName = ?1"),
+//})
 public class User {
     /**
      * 主键，策略为自增
@@ -47,4 +52,9 @@ public class User {
 
     @Column
     private LocalDateTime regTime;
+
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinTable(name = "user_authority",joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "authority_id"))
+    private List<Authority> authorityList = new ArrayList<>();
 }

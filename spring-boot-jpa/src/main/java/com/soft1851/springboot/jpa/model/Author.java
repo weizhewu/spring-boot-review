@@ -1,8 +1,13 @@
-package com.soft1851.springboot.jpa.model.cascade;
+package com.soft1851.springboot.jpa.model;
 
+import com.soft1851.springboot.jpa.model.Article;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,6 +16,9 @@ import java.util.List;
  * @Description:
  */
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Author {
     @Id // 主键
@@ -24,6 +32,7 @@ public class Author {
     // 级联保存、更新、删除、刷新;延迟加载。当删除用户，会级联删除该用户的所有文章
     // 拥有mappedBy注解的实体类为关系被维护端
     // mappedBy="author"中的author是Article中的author属性
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Article> articleList;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "author_id")
+    private List<Article> articleList = new ArrayList<>();
 }

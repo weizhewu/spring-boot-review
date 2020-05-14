@@ -1,6 +1,6 @@
 package com.soft1851.springboot.jpa.service;
 
-import com.soft1851.springboot.jpa.model.cascade.User;
+import com.soft1851.springboot.jpa.model.User;
 
 import java.util.List;
 

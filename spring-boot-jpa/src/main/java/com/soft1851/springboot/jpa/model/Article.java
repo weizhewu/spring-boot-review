@@ -1,4 +1,4 @@
-package com.soft1851.springboot.jpa.model.cascade;
+package com.soft1851.springboot.jpa.model;
 
 import lombok.Data;
 
@@ -25,8 +25,5 @@ public class Article {
     @Column(nullable = false) // 映射为字段，值不能为空
     private String content;//文章全文内容
 
-    //可选属性optional=false, 表示 author不能为空。删除文章，不影响用户
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
-    @JoinColumn(name = "author_id")//设置在article表中的关联字段(外键)
-    private Author author;//所属作者
+
 }

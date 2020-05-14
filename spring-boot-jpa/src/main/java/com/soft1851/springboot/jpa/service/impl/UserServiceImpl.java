@@ -1,7 +1,7 @@
 package com.soft1851.springboot.jpa.service.impl;
 
 import com.soft1851.springboot.jpa.repository.UserRepository;
-import com.soft1851.springboot.jpa.model.cascade.User;
+import com.soft1851.springboot.jpa.model.User;
 import com.soft1851.springboot.jpa.service.UserService;
 
 import javax.annotation.Resource;

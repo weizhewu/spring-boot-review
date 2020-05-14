@@ -1,8 +1,11 @@
 package com.soft1851.springboot.jpa.repository;
 
-import com.soft1851.springboot.jpa.model.cascade.User;
+import com.soft1851.springboot.jpa.model.Authority;
+import com.soft1851.springboot.jpa.model.User;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.*;
 
 import javax.annotation.Resource;
 
@@ -18,6 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @Description:
  */
 @SpringBootTest
+@Slf4j
 class UserRepositoryTest {
     @Resource
     private UserRepository userRepository;
@@ -48,19 +52,19 @@ class UserRepositoryTest {
      */
     @Test
     public void testBaseQuery() {
-        System.out.println(userRepository.findAll().size());
+//        System.out.println(userRepository.findAll().size());
+//
+//        assertNotNull(userRepository.findById(1L).get().getAge());
 
-        assertNotNull(userRepository.findById(1L).get().getAge());
-
-//        User saveUser= User.builder()
-//                .userName("测试")
-//                .email("test")
-//                .password("232623")
-//                .nickName("test")
-//                .age(10)
-//                .regTime(LocalDateTime.now())
-//                .build();
-//        userRepository.save(saveUser);
+        User saveUser= User.builder()
+                .userName("测试")
+                .email("test")
+                .password("232623")
+                .nickName("test")
+                .age(10)
+                .regTime(LocalDateTime.now())
+                .build();
+        userRepository.save(saveUser);
 //
 //        User delUser = User.builder()
 //                .userName("测试")
@@ -72,9 +76,9 @@ class UserRepositoryTest {
 //                .build();
 //        userRepository.delete(delUser);
 
-        userRepository.count();
-
-        assert(userRepository.existsById(1l));
+//        userRepository.count();
+//
+//        assert(userRepository.existsById(1l));
 
     }
 
@@ -82,12 +86,11 @@ class UserRepositoryTest {
     void findByUserNameEqualsAndPasswordEquals() {
         User resultUser = userRepository.findByUserNameEqualsAndPasswordEquals("user1","232623");
         assertNotNull(resultUser.getId());
-
     }
 
     @Test
     void findUsersByNickNameLike() {
-        List<User> userList = userRepository.findUsersByNickNameLike("name");
+        List<User> userList = userRepository.findUsersByNickNameLike("name1");
         userList.forEach(user -> System.out.println(user.getUserName()));
     }
 
@@ -118,4 +121,82 @@ class UserRepositoryTest {
     }
 
 
+    /**
+     * https://blog.csdn.net/qq_35953966/article/details/104061854
+     */
+    @Test
+    void findALL() {
+        int page = 1 ,size = 2;
+//        Sort sort = new Sort(Sort.Direction.DESC, "id");
+        Sort sort = Sort.by(Sort.Direction.DESC, "id");
+        Pageable pageable = PageRequest.of(page, size, sort);
+        userRepository.findAll().forEach(user -> log.info(user.toString()));
+        Page<User> pageInfo  =  userRepository.findALL(pageable);
+        log.info("总记录数： {}", pageInfo.getTotalElements());
+        log.info("当前页记录数： {}", pageInfo.getNumberOfElements());
+        log.info("每页记录数： {}", pageInfo.getSize());
+        log.info("获取总页数： {}", pageInfo.getTotalPages());
+        log.info("查询结果： {}", pageInfo.getContent());
+        log.info("当前页（从0开始计）： {}", pageInfo.getNumber());
+        log.info("是否为首页： {}", pageInfo.isFirst());
+        log.info("是否为尾页： {}", pageInfo.isLast());
+
+    }
+
+    @Test
+    void findByNickName() {
+        int page=1,size=2;
+        Sort sort = Sort.by(Sort.Direction.DESC, "id");
+        Pageable pageable = PageRequest.of(page, size, sort);
+        userRepository.findByNickName("name1", pageable);
+    }
+
+    @Test
+    void findByNickNameAndEmail() {
+        int page=1,size=2;
+        Sort sort = Sort.by(Sort.Direction.DESC, "id");
+        Pageable pageable = PageRequest.of(page, size, sort);
+        Slice<User> users =  userRepository.findByNickNameAndEmail("name1","222222@qq.com",pageable);
+        System.out.println(users.getSize());
+    }
+
+    @Test
+    void modifyById() {
+        userRepository.modifyById("test",1L);
+    }
+
+    @Test
+    void findById() {
+        System.out.println(userRepository.findById(1l).getUserName());
+    }
+
+    @Test
+    void updateNickName() {
+        userRepository.updateNickName("test",1l);
+    }
+
+    @Test
+    void insertUser() {
+        userRepository.insertUser("test2","123456","24525245");
+    }
+
+    @Test
+    void findFirst10ByNickName() {
+        int page=0,size=2;
+        Sort sort = Sort.by(Sort.Direction.DESC, "id");
+        Pageable pageable = PageRequest.of(page, size, sort);
+        System.out.println(userRepository.findFirst10ByNickName("name5",pageable).size());
+    }
+
+    @Test
+    void testManyToMany(){
+        System.out.println("***************************************");
+        User user = userRepository.findById(1);
+        System.out.println(user.getNickName()+","+user.getUserName()+","+user.getAge());
+        List<Authority> authorityList = user.getAuthorityList();
+        authorityList.forEach(authority -> {
+            System.out.println(authority.getName()+","+authority.getId());
+        });
+
+    }
 }

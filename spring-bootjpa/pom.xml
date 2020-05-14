@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.soft1851</groupId>
-    <artifactId>spring-boot-jpa</artifactId>
+    <artifactId>spring-bootjpa</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-jpa</name>
+    <name>spring-bootjpa</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -74,15 +74,13 @@
 
 
 
-<!--        &lt;!&ndash;工具类&ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>commons-lang</groupId>-->
-<!--            <artifactId>commons-lang</artifactId>-->
-<!--            <version>2.6</version>-->
-<!--        </dependency>-->
+        <!--        &lt;!&ndash;工具类&ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>commons-lang</groupId>-->
+        <!--            <artifactId>commons-lang</artifactId>-->
+        <!--            <version>2.6</version>-->
+        <!--        </dependency>-->
     </dependencies>
-
-
 
     <build>
         <plugins>

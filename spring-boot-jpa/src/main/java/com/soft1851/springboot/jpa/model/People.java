@@ -1,6 +1,10 @@
-package com.soft1851.springboot.jpa.model.cascade;
+package com.soft1851.springboot.jpa.model;
 
+import com.soft1851.springboot.jpa.model.Address;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -11,6 +15,9 @@ import java.sql.Timestamp;
  * @Description:
  */
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class People {
     @Id

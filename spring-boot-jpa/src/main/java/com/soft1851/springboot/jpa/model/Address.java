@@ -1,4 +1,4 @@
-package com.soft1851.springboot.jpa.model.cascade;
+package com.soft1851.springboot.jpa.model;
 
 import lombok.Data;
 

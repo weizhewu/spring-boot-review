@@ -1,5 +1,6 @@
-package com.soft1851.springboot.jpa.model.cascade;
+package com.soft1851.springboot.jpa.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -28,4 +29,7 @@ public class Authority {
      */
 //    @ManyToMany(mappedBy = "authorityList")
 //    private List<User> userList;
+    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private List<User> userList;
 }

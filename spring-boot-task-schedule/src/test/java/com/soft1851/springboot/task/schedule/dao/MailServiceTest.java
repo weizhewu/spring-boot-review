@@ -2,10 +2,12 @@ package com.soft1851.springboot.task.schedule.dao;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.thymeleaf.context.Context;
 
 import javax.annotation.Resource;
 import javax.mail.MessagingException;
 
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,6 +37,7 @@ class MailServiceTest {
         String subject ="小傻子专属";
         String content = "<h3>大大的小傻子</h3>";
         mailService.sendHtmlMail(to,subject,content);
+
     }
 
     @Test
@@ -51,7 +54,7 @@ class MailServiceTest {
         String to = "weizhewu232623@gmail.com";
         String subject ="小傻子千万别打开";
         String content = "<h3>大大的小傻子</h3><br/><img src=\"cid:img01\"/";
-        String imgPath = "D:\\还是小傻子.png";
+        String imgPath = "D:\\1.png";
         Map<String,String> imgMap = new HashMap<>();
         //以键值对的形式存入
         imgMap.put("img01",imgPath);

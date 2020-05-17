@@ -1,5 +1,5 @@
 server:
-  port: 8080
+#  port: 8080
 spring:
   mail:
     host: smtp.qq.com
@@ -8,7 +8,7 @@ spring:
     password: twqmbdmwvapxdijj
     default-encoding: UTF-8
   datasource:
-    url: jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -19,3 +19,21 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
       ddl-auto: update
+### Feign 配置
+#feign:
+#  httpclient:
+#    # 开启 Http Client
+#    enabled: true
+#    # 最大连接数，默认：200
+#    max-connections: 200
+#    # 最大路由，默认：50
+#    max-connections-per-route: 50
+#    # 连接超时，默认：2000/毫秒
+#    connection-timeout: 2000
+#    # 生存时间，默认：900L
+#    time-to-live: 900
+#    # 响应超时的时间单位，默认：TimeUnit.SECONDS
+##    timeToLiveUnit: SECONDS
+jasypt:
+  encryptor:
+    password: root

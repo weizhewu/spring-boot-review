@@ -18,7 +18,7 @@ import java.util.List;
  * @Date: 2020/5/14 21:20
  * @Description:
  */
-@Component
+//@Component
 public class Task2 {
     @Resource
     private UserRepository userRepository;

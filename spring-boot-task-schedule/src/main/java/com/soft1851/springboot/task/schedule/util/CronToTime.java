@@ -18,7 +18,6 @@ public class CronToTime {
         Date date = null;
         try {
             date = sdf.parse(cron);
-
         } catch (ParseException e) {
             return null;// 此处缺少异常处理,自己根据需要添加
         }
@@ -49,7 +48,5 @@ public class CronToTime {
 
         System.out.println(CronToTime.getCorn(Date.from(LocalDateTime.now()
         .atZone(ZoneId.systemDefault()).toInstant())));
-
-
     }
 }

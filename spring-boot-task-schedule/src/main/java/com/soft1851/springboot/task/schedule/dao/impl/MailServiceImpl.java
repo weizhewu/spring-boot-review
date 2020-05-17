@@ -26,7 +26,7 @@ public class MailServiceImpl implements MailService {
     /**
      * 读入配置文件中的邮箱发送者设置
      */
-    @Value("${spring.mail.username}")
+    @Value("2316860587@qq.com")
     private String from;
     @Resource
     private JavaMailSender mailSender;

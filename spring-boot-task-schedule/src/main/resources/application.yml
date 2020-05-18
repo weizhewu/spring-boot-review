@@ -1,6 +1,10 @@
-server:
+#server:
 #  port: 8080
+quartz:
+  enabled: true
 spring:
+  application:
+    name: Spring-Quartz-Scheduler
   mail:
     host: smtp.qq.com
     port: 25
@@ -8,10 +12,19 @@ spring:
     password: twqmbdmwvapxdijj
     default-encoding: UTF-8
   datasource:
-    url: jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/test3?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
+    tomcat:
+      initialSize: 20
+      maxActive: 100
+      maxIdle: 100
+      minIdle: 20
+      maxWait: 10000
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
   jpa:
     database: mysql
     show-sql: false

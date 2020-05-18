@@ -1,0 +1,18 @@
+2020-05-18 21:12:04.250  INFO   --- [main] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2020-05-18 21:12:04.278  INFO   --- [main] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2020-05-18 21:12:04.278  INFO   --- [main] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2020-05-18 21:12:04.279  INFO   --- [main] org.quartz.core.QuartzScheduler          : Scheduler QuartzScheduler_$_PC-20200111QLIL1589807524267 shutting down.
+2020-05-18 21:12:04.280  INFO   --- [main] org.quartz.core.QuartzScheduler          : Scheduler QuartzScheduler_$_PC-20200111QLIL1589807524267 paused.
+2020-05-18 21:12:04.285  WARN   --- [main] org.quartz.impl.jdbcjobstore.JobStoreTX  : Database connection shutdown unsuccessful.
+
+java.sql.SQLException: There is no DataSource named 'null'
+	at org.quartz.utils.DBConnectionManager.shutdown(DBConnectionManager.java:135)
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.shutdown(JobStoreSupport.java:746)
+	at org.quartz.core.QuartzScheduler.shutdown(QuartzScheduler.java:732)
+	at org.quartz.impl.StdSchedulerFactory.shutdownFromInstantiateException(StdSchedulerFactory.java:1431)
+	at org.quartz.impl.StdSchedulerFactory.instantiate(StdSchedulerFactory.java:1391)
+	at org.quartz.impl.StdSchedulerFactory.getScheduler(StdSchedulerFactory.java:1579)
+	at com.soft1851.springboot.task.schedule.quartz.QuartzManager.addJob(QuartzManager.java:81)
+	at com.soft1851.springboot.task.schedule.quartz.DynamicScheduleTask.main(DynamicScheduleTask.java:20)
+
+2020-05-18 21:12:04.286  INFO   --- [main] org.quartz.core.QuartzScheduler          : Scheduler QuartzScheduler_$_PC-20200111QLIL1589807524267 shutdown complete.

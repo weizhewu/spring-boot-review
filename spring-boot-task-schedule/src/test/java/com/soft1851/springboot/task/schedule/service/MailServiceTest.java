@@ -1,5 +1,6 @@
-package com.soft1851.springboot.task.schedule.dao;
+package com.soft1851.springboot.task.schedule.service;
 
+import com.soft1851.springboot.task.schedule.service.MailService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.thymeleaf.context.Context;

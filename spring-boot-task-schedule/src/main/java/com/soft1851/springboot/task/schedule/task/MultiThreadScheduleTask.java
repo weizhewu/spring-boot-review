@@ -23,7 +23,7 @@ import java.awt.*;
 /**
  * @Author: zw_w
  * @Date: 2020/5/17 18:29
- * @Description:
+ * @Description: 多线程异步任务
  */
 //@Slf4j
 //@Configuration
@@ -44,7 +44,7 @@ public class MultiThreadScheduleTask {
     }
 
     @Async
-    @Scheduled(fixedDelay = 2000)
+    @Scheduled(cron = "0 28 9 18 5 ?")
     public void getCoder(){
         int index = RandomUtil.randomInt(1,2);
         Coder coder = coderRepository.findById(1).get();
@@ -52,8 +52,8 @@ public class MultiThreadScheduleTask {
 
     }
 
-    @Async
-    @Scheduled(cron = "0 57 18 * * ?")
+//    @Async
+//    @Scheduled(cron = "0 11 9 18 5 ?")
     public void download(Coder coder){
         String template = "D:/code/{}.jpg";
         String path = StrUtil.format(template, IdUtil.simpleUUID());
@@ -61,8 +61,8 @@ public class MultiThreadScheduleTask {
         getQrCode(coder.getUrl(),path);
     }
 
-    @Async
-    @Scheduled(cron = "0 57 18 * * ?")
+//    @Async
+//@Scheduled(cron = "0 11 9 18 5 ?")
     public void getQrCode(String content,String logo){
         String template = "D:/code/{}.jpg";
         String file  = StrUtil.format(template,IdUtil.simpleUUID());

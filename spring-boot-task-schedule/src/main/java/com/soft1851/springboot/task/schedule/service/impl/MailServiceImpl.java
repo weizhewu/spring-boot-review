@@ -1,6 +1,6 @@
-package com.soft1851.springboot.task.schedule.dao.impl;
+package com.soft1851.springboot.task.schedule.service.impl;
 
-import com.soft1851.springboot.task.schedule.dao.MailService;
+import com.soft1851.springboot.task.schedule.service.MailService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;

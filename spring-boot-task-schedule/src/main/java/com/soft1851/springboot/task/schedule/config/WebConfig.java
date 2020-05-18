@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @Date: 2020/5/17 23:04
  * @Description:
  */
-@Configuration
+//@Configuration
 public class WebConfig implements WebMvcConfigurer {
 
     // 内部端口

@@ -18,7 +18,7 @@ import java.util.Set;
  * @Date: 2020/5/17 22:37
  * @Description:
  */
-@Configuration
+//@Configuration
 public class TrustedPortConfiguration {
 
     // 提供给外部接口使用的端口

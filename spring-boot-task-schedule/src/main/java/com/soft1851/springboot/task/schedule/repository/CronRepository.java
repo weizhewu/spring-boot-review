@@ -11,9 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
  * @Date: 2020/5/15 20:37
  * @Description:
  */
-public interface CronRepository extends JpaRepository<Cron,Integer> {
+public interface CronRepository extends JpaRepository<Cron, Integer> {
     /**
      * 根据cronId查询
+     *
      * @param cronId
      * @return
      */

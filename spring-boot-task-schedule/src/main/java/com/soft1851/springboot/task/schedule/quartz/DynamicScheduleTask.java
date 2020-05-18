@@ -1,6 +1,6 @@
 package com.soft1851.springboot.task.schedule.quartz;
 
-import com.soft1851.springboot.task.schedule.jobs.TestJob;
+import com.soft1851.springboot.task.schedule.job.TestJob;
 import org.quartz.SchedulerException;
 
 /**
@@ -17,7 +17,7 @@ public class DynamicScheduleTask {
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
-        QuartzManager.addJog("testJob","jobGroup1","testTrigger","triggerGroup1",TestJob.class,"0/5 * * * * ?");
+        QuartzManager.addJob("testJob","jobGroup1","testTrigger","triggerGroup1",TestJob.class,"0/5 * * * * ?");
 
         //修改任务
         QuartzManager.modifyJobTime("testTrigger","triggerGroup1",5);

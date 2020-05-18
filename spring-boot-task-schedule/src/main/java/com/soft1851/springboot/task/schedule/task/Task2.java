@@ -1,8 +1,8 @@
 package com.soft1851.springboot.task.schedule.task;
 
-import com.soft1851.springboot.task.schedule.dao.MailService;
 import com.soft1851.springboot.task.schedule.model.User;
 import com.soft1851.springboot.task.schedule.repository.UserRepository;
+import com.soft1851.springboot.task.schedule.service.MailService;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.thymeleaf.TemplateEngine;

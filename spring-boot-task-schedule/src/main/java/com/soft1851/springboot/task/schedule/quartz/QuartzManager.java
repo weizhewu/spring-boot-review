@@ -58,11 +58,11 @@ public class QuartzManager {
      * @param triggerName       触发器名
      * @param triggerGroupName  触发器组名
      * @param jobClass          任务类
-         * @param cron          cron表达式
+     * @param cron          cron表达式
      * @param objects           需要传递给执行任务的信息
      * @throws SchedulerException
      */
-    public static void addJog(String jobName,String jobGroupName,String triggerName,String triggerGroupName,Class<? extends Job>jobClass,String cron,Object... objects) throws SchedulerException{
+    public static void addJob(String jobName,String jobGroupName,String triggerName,String triggerGroupName,Class<? extends Job>jobClass,String cron,Object... objects) throws SchedulerException{
         JobDetail jobDetail = JobBuilder.newJob(jobClass).withIdentity(jobName,jobGroupName).build();
         if (objects != null){
             for (int i = 0;i < objects.length;i++){

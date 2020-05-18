@@ -149,6 +149,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     List<User> findFirst10ByNickName(String nickName , Pageable pageable);
 
+    @Transactional(rollbackFor = RuntimeException.class)
     @Query(value = "select user_name,age,nick_name from user where id = ?1",nativeQuery = true)
     User findUserById(long id);
 
